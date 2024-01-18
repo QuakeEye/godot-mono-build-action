@@ -12,6 +12,8 @@ ENV PATH="/root/.dotnet:${PATH}"
 
 LABEL "com.github.actions.name"="Build Godot Mono"
 LABEL "com.github.actions.description"="Build a Godot mono project"
+LABEL "com.github.actions.icon"="play-circle"
+LABEL "com.github.actions.color"="purple"
 
 LABEL repository="https://github.com/QuakeEye/godot-mono-build-action"
 
