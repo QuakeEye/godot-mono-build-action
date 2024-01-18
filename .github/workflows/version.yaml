@@ -26,6 +26,8 @@ jobs:
           node-version: "lts/*"
       - name: Install Semantic Release
         run: npm install -g semantic-release@23
+      - name: Install Semantic Release Exec
+        run: npm install -g @semantic-release/exec@6
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
