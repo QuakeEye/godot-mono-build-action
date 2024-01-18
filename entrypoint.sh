@@ -34,7 +34,7 @@ fi
 echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
-godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 > $GITHUB_WORKSPACE/godotheadless.log 2>&1
+godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 > godotheadless.log 2>&1
 
 
 # Check the exit code of the last command using exit code
@@ -49,9 +49,10 @@ godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-
 
 
 # Check if the build was successful by grepping the log file for a possible error message
-if grep -q "ERROR: " $GITHUB_WORKSPACE/godotheadless.log
+if grep -q "ERROR: " godotheadless.log
 then
-    echo "Godot build failed. Exiting with error."
+    echo "Godot build failed. Exiting with error. This is the build log:"
+    cat $godotheadless.log
     exit 1
 fi
 
