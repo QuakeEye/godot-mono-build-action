@@ -25,10 +25,10 @@ jobs:
         with:
           node-version: "lts/*"
       - name: Install Semantic Release
-        run: npm install -g semantic-release@23
-      - name: Install Semantic Release Exec
-        run: npm install -g @semantic-release/exec@6 @semantic-release/commit-analyzer@11 @semantic-release/release-notes-generator@12
+        run: npm install semantic-release@23
+      - name: Install Semantic Release Dependencies
+        run: npm install @semantic-release/exec@6 @semantic-release/commit-analyzer@11 @semantic-release/release-notes-generator@12
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        run: npx semantic-release@23 --config release.config.js --dry-run false --debug true
+        run: npx semantic-release@23 --config release.config.js --dry-run false
