@@ -49,12 +49,11 @@ godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-
 
 
 # Check if the build was successful by grepping the log file for a possible error message
-grep -q "ERROR" $GITHUB_WORKSPACE/godotheadless.log
-if [ $? -ne 0 ]; then
-  echo "Godot build failed. Exiting with error."
-  exit 1
+if grep -q "ERROR: " $GITHUB_WORKSPACE/godotheadless.log
+then
+    echo "Godot build failed. Exiting with error."
+    exit 1
 fi
-
 
 echo "Build Done"
 
