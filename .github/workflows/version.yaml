@@ -27,7 +27,9 @@ jobs:
       - name: Install Semantic Release
         run: npm install -g semantic-release@23
       - name: Install Semantic Release Exec
-        run: npm install -g @semantic-release/exec@6
+        run: npm install -g @semantic-release/exec@6 \
+          @semantic-release/commit-analyzer@11 \
+          @semantic-release/release-notes-generator@12
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
