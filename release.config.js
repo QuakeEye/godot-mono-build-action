@@ -10,5 +10,8 @@ module.exports = {
         "publishCmd": "publish-package"
       }
     ]
+  ],
+  "branches": [
+    "main"
   ]
 }
