@@ -1,0 +1,34 @@
+name: "Build Mono Godot Project"
+description: "Build a Godot project that uses Mono"
+
+inputs:
+  name:
+    description: 'Name of the exported binary'
+    required: true
+  preset:
+    description: 'Name of the preset in `export_presets.cfg` to use'
+    required: true
+  subdirectory:
+    description: 'Optional name of the subdirectory to put exported project in'
+    default: ""
+  package:
+    description: 'Set true to output an artifact zip file'
+    default: false
+  projectDir:
+    description: 'Location of Godot project in repository'
+    default: "."
+  debugMode:
+    description: 'Whether or not to use `--export-debug`'
+    default: false
+
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.name }}
+    - ${{ inputs.preset }}
+    - ${{ inputs.subdirectory }}
+    - ${{ inputs.package }}
+    - ${{ inputs.projectDir }}
+    - ${{ inputs.debugMode }}
