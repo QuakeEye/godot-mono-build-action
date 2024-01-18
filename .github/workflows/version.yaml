@@ -31,4 +31,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        run: npx semantic-release@23 --config release.config.js --dry-run false
+        run: npx semantic-release@23 --dry-run false
