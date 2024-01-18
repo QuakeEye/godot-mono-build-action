@@ -32,6 +32,6 @@ runs:
     - ${{ inputs.package }}
     - ${{ inputs.projectDir }}
     - ${{ inputs.debugMode }}
-  branding:
-    icon: "play-circle"
-    color: "purple"
+branding:
+  icon: "play-circle"
+  color: "purple"
