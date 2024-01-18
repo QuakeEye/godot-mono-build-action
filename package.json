@@ -1,0 +1,8 @@
+{
+  "name": "godot-mono-build-action",
+  "version": "0.0.0-semantically-released",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuakeEye/godot-mono-build-action.git"
+  }
+}
