@@ -34,7 +34,7 @@ fi
 echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
-godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 > godotheadless.log
+godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 > /home/runner/work/godot-mono-build-action/godot-mono-build-action/godotheadless.log
 
 # Check the exit code of the last command
 if [ $? -ne 0 ]; then
