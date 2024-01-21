@@ -42,7 +42,7 @@ godot --headless --editor --quit-after 60 . 2> godot_error.log
 if grep -q "ERROR: " godot_error.log
 then
     echo "Godot project is invalid. Exiting with error. This is the build log:"
-    cat $godot_error.log
+    cat godot_error.log
     exit 1
 fi
 
