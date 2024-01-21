@@ -50,7 +50,7 @@ godot --headless --editor --quit-after 3000 . 2> godot_error.log
 #     exit 1
 # fi
 
-ls -la ./test-project/.godot
+ls -la ./.godot
 
 # Build the project
 echo "Building the project"
