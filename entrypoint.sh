@@ -50,6 +50,7 @@ fi
 
 # Build the project
 echo "Building the project"
+ls -la .
 godot --headless --verbose --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
 
 
