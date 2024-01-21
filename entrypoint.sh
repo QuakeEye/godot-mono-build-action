@@ -36,6 +36,7 @@ mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
 
 # Set up files required for the build
+echo "Setting up files required for the build"
 godot --headless --editor --quit-after 60 ./test-project/ 2> godot_error.log
 
 # Check if the project is valid
@@ -47,6 +48,7 @@ then
 fi
 
 # Build the project
+echo "Building the project"
 godot --headless --verbose --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
 
 
