@@ -36,12 +36,12 @@ mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
 
 # Set up files required for the build
-godot --headless --editor --quit-after 60 . 2> godot_error.log
+godot --headless --editor --quit-after 60 ./test-project/ 2> godot_error.log
 
 # Check if the project is valid
 if grep -q "ERROR: " godot_error.log
 then
-    echo "Godot project is invalid. Exiting with error. This is the build log:"
+    echo "Godot project is invalid. Exiting with error. This is the project folder population log:"
     cat godot_error.log
     exit 1
 fi
