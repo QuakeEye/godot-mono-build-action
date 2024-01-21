@@ -9,6 +9,7 @@ RUN ./dotnet-install.sh --version latest
 
 # Add dotnet to path
 ENV PATH="/root/.dotnet:${PATH}"
+ENV DOTNET_ROOT="/root/.dotnet"
 
 LABEL "com.github.actions.name"="Build Godot Mono"
 LABEL "com.github.actions.description"="Build a Godot mono project"
