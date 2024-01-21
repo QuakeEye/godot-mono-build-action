@@ -40,7 +40,7 @@ cd "$GITHUB_WORKSPACE/$5"
 # Set up files required for the build
 echo "Setting up files required for the build"
 ls -la .
-godot --headless --editor --quit-after 60 ./test-project/. 2> godot_error.log
+godot --headless --editor --quit-after 60 . 2> godot_error.log
 
 # Check if the project is valid
 if grep -q "ERROR: " godot_error.log
