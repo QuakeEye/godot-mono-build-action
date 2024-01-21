@@ -12,6 +12,8 @@ echo "Installed Dotnet SDK version:"
 dotnet --version
 echo "Installed Mono version:"
 mono --version
+echo "Installed dotnet runtimes:"
+dotnet --info
 
 
 # Set the subdirectory location, if provided
