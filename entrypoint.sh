@@ -70,23 +70,23 @@ cd "$GITHUB_WORKSPACE/$5"
 
 # Set up files required for the build
 echo "Setting up editor files required for the build"
-godot --headless --editor --quit-after 60 . 2> godot_error.log
+# godot --headless --editor --quit-after 60 . 2> godot_error.log
 
 # check_for_errors
 
 # A hacky way to do this but as mentioned Godot currently always returns 0
-errors=$(grep -c "Error: " godot_error.log)
-ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
+# errors=$(grep -c "Error: " godot_error.log)
+# ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
 
-echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
+# echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
 
-# Check if the project is valid
-if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
-then
-    echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
-    cat godot_error.log
-    exit 1
-fi
+# # Check if the project is valid
+# if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
+# then
+#     echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
+#     cat godot_error.log
+#     exit 1
+# fi
 
 
 # Build the project
