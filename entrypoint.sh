@@ -18,8 +18,8 @@ check_for_errors() {
 
 
     # A hacky way to do this but as mentioned Godot currently always returns 0
-    errors=grep -c "Error: " godot_error.log
-    ignoredErrors=grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log
+    errors=$(grep -c "Error: " godot_error.log)
+    ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
 
     echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
 
