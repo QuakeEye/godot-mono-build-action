@@ -19,6 +19,6 @@ LABEL "com.github.actions.color"="purple"
 LABEL repository="https://github.com/QuakeEye/godot-mono-build-action"
 
 USER root
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT [ "/entrypoint.sh" ]
+ADD entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+ENTRYPOINT [ "./entrypoint.sh" ]
