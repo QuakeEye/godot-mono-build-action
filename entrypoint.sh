@@ -2,35 +2,35 @@
 # set -e
 
 
-# # Function definitions
-# check_for_errors() {
+# Function definitions
+check_for_errors() {
 
-#     # Check the exit code of the last command
+    # Check the exit code of the last command
 
-#     # This method does not yet work, as godot always returns 0: https://github.com/godotengine/godot/issues/83042
-#     # It would be more elegant than the current solution, so I'm leaving it here for now.
+    # This method does not yet work, as godot always returns 0: https://github.com/godotengine/godot/issues/83042
+    # It would be more elegant than the current solution, so I'm leaving it here for now.
 
-#     # if [ $? -ne 0 ]; then
-#     #   echo "Godot build failed. Exiting with error. This is the build log:"
-#     #   cat godot_error.log
-#     #   exit 1
-#     # fi
+    # if [ $? -ne 0 ]; then
+    #   echo "Godot build failed. Exiting with error. This is the build log:"
+    #   cat godot_error.log
+    #   exit 1
+    # fi
 
 
-#     # A hacky way to do this but as mentioned Godot currently always returns 0
-#     errors=$(grep -c "Error: " godot_error.log)
-#     ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
+    # A hacky way to do this but as mentioned Godot currently always returns 0
+    errors=$(grep -c "Error: " godot_error.log)
+    ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
 
-#     echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
+    echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
 
-#     # Check if the project is valid
-#     if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
-#     then
-#         echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
-#         cat godot_error.log
-#         exit 1
-#     fi
-# }
+    # Check if the project is valid
+    if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
+    then
+        echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
+        cat godot_error.log
+        exit 1
+    fi
+}
 
 
 # Move godot templates already installed from the docker image to home
@@ -73,23 +73,16 @@ cd "$GITHUB_WORKSPACE/$5"
 
 # Set up files required for the build
 echo "Setting up editor files required for the build"
-# godot --headless --editor --quit-after 60 . 2> godot_error.log
 
-# check_for_errors
+if [ "$8" = "true" ]
+then
+    godot --headless --verbose --editor --quit-after 60 . 2> godot_error.log
+else
+    godot --headless --editor --quit-after 60 . 2> godot_error.log
+fi
 
-# A hacky way to do this but as mentioned Godot currently always returns 0
-# errors=$(grep -c "Error: " godot_error.log)
-# ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
 
-# echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
-
-# # Check if the project is valid
-# if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
-# then
-#     echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
-#     cat godot_error.log
-#     exit 1
-# fi
+check_for_errors
 
 
 # Build the project
@@ -104,23 +97,7 @@ fi
 
 
 # Check if the build was successful by grepping the log file for a possible error message
-# check_for_errors
-
-# A hacky way to do this but as mentioned Godot currently always returns 0
-errors=$(grep -c "ERROR: " godot_error.log)
-ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
-
-echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
-
-cat godot_error.log
-
-# Check if the project is valid
-if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
-then
-    echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
-    cat godot_error.log
-    exit 1
-fi
+check_for_errors
 
 
 echo "Build Done"
