@@ -2,6 +2,12 @@
 # set -e        # This can be re-enabled once Godot CLI gives back proper exit codes
 
 
+if [ "$8" = "true" ]
+then
+    echo "Verbose mode enabled"
+fi
+
+
 # Function definitions
 check_for_errors() {
 
