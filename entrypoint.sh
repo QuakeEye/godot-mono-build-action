@@ -99,7 +99,7 @@ check_for_errors
 
 
 echo "Build Done"
-echo ::set-output name=build::build/${SubDirectoryLocation:-""}
+echo build=build/${SubDirectoryLocation:-""} >> $GITHUB_OUTPUT
 
 
 # Pack the build, if requested
@@ -109,7 +109,7 @@ then
     mkdir -p $GITHUB_WORKSPACE/package
     cd $GITHUB_WORKSPACE/build
     zip $GITHUB_WORKSPACE/package/artifact.zip ${SubDirectoryLocation:-"."} -r
-    echo ::set-output name=artifact::package/artifact.zip
+    echo artifact=package/artifact.zip >> $GITHUB_OUTPUT
     echo "Done"
 fi
 
