@@ -39,7 +39,6 @@ runs:
     - ${{ inputs.projectDir }}
     - ${{ inputs.debugMode }}
     - ${{ inputs.viewVersions }}
-    # checkforerrors
 
 branding:
   icon: "play-circle"

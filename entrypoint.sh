@@ -1,5 +1,5 @@
 #!/bin/sh
-# set -e
+# set -e        # This can be re-enabled once Godot CLI gives back proper exit codes
 
 
 # Function definitions
@@ -21,7 +21,7 @@ check_for_errors() {
     errors=$(grep -c "ERROR: " godot_error.log)
     ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
 
-    echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
+    echo "Found $errors error(s) in the project. Ignoring $ignoredErrors error(s)."
 
     # Check if the project is valid
     if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
@@ -38,7 +38,7 @@ mkdir -v -p ~/.local/share/godot/export_templates
 cp -a /root/.local/share/godot/templates/. ~/.local/share/godot/export_templates/
 
 
-# Verify the dotnet installation
+# Verify/print the dotnet installation
 if [ "$7" = "true" ]
 then
     echo "Installed Dotnet SDK version:"
@@ -71,6 +71,7 @@ echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
 
+
 # Set up files required for the build
 echo "Setting up editor files required for the build"
 
@@ -80,7 +81,6 @@ then
 else
     godot --headless --editor --quit-after 60 . 2> godot_error.log
 fi
-
 
 check_for_errors
 
@@ -95,13 +95,10 @@ else
     godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
 fi
 
-
-# Check if the build was successful by grepping the log file for a possible error message
 check_for_errors
 
 
 echo "Build Done"
-
 echo ::set-output name=build::build/${SubDirectoryLocation:-""}
 
 
