@@ -15,4 +15,5 @@ jobs:
           preset: linux
           projectDir: test-project
           package: true
+          
           runVerbose: true
