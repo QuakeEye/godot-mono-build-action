@@ -112,6 +112,8 @@ ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::ge
 
 echo "Found $errors errors in the project. Ignoring $ignoredErrors errors."
 
+cat godot_error.log
+
 # Check if the project is valid
 if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
 then
