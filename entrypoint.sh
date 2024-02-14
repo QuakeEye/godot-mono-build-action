@@ -94,7 +94,13 @@ echo "Setting up editor files required for the build"
 
 # Build the project
 echo "Building the project"
-godot --headless --verbose --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
+
+if [ "$8" = "true" ]
+then
+    godot --headless --verbose --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
+else
+    godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
+fi
 
 
 # Check if the build was successful by grepping the log file for a possible error message

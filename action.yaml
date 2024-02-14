@@ -23,6 +23,9 @@ inputs:
   viewVersions:
     description: 'Prints dotnet and mono versions'
     default: false
+  runVerbose:
+    description: 'Runs Godot CLI commands in verbose mode'
+    default: false
 
 
 runs:
