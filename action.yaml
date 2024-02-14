@@ -20,6 +20,12 @@ inputs:
   debugMode:
     description: 'Whether or not to use `--export-debug`'
     default: false
+  viewVersions:
+    description: 'Prints dotnet and mono versions'
+    default: false
+  runVerbose:
+    description: 'Runs Godot CLI commands in verbose mode'
+    default: false
 
 
 runs:
@@ -32,6 +38,7 @@ runs:
     - ${{ inputs.package }}
     - ${{ inputs.projectDir }}
     - ${{ inputs.debugMode }}
+    - ${{ inputs.viewVersions }}
 
 branding:
   icon: "play-circle"

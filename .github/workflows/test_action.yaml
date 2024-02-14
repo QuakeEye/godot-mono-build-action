@@ -1,7 +1,6 @@
 name: Test Build Action
 on:
-  push:
-    branches: ["master", "main", "prod", "production"]
+  push
 
 jobs:
   TestAction:
