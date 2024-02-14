@@ -39,6 +39,7 @@ runs:
     - ${{ inputs.projectDir }}
     - ${{ inputs.debugMode }}
     - ${{ inputs.viewVersions }}
+    - ${{ inputs.runVerbose }}
 
 branding:
   icon: "play-circle"
