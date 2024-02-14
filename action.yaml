@@ -20,6 +20,9 @@ inputs:
   debugMode:
     description: 'Whether or not to use `--export-debug`'
     default: false
+  viewVersions:
+    description: 'Prints dotnet and mono versions'
+    default: false
 
 
 runs:
@@ -32,6 +35,7 @@ runs:
     - ${{ inputs.package }}
     - ${{ inputs.projectDir }}
     - ${{ inputs.debugMode }}
+    - ${{ inputs.viewVersions }}
     # checkforerrors
 
 branding:

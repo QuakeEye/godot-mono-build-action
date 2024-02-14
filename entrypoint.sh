@@ -39,12 +39,15 @@ cp -a /root/.local/share/godot/templates/. ~/.local/share/godot/export_templates
 
 
 # Verify the dotnet installation
-echo "Installed Dotnet SDK version:"
-dotnet --version
-echo "Installed Mono version:"
-mono --version
-echo "Installed dotnet runtimes:"
-dotnet --info
+if [ "$7" = "true" ]
+then
+    echo "Installed Dotnet SDK version:"
+    dotnet --version
+    echo "Installed Mono version:"
+    mono --version
+    echo "Installed dotnet runtimes:"
+    dotnet --info
+fi
 
 
 # Set the subdirectory location, if provided
@@ -127,3 +130,5 @@ then
     echo ::set-output name=artifact::package/artifact.zip
     echo "Done"
 fi
+
+exit 0
