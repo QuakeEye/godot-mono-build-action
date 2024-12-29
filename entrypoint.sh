@@ -68,11 +68,16 @@ check_for_errors
 # Build the project
 echo "Building the project"
 
+output_file="$GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1"
+if [ "$9" = "true" ]; then
+    output_file="${output_file}.exe"
+fi
+
 if [ "$8" = "true" ]
 then
-    godot --headless --verbose --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
+    godot --headless --verbose --${mode} "$2" "$output_file" 2> godot_error.log
 else
-    godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 2> godot_error.log
+    godot --headless --${mode} "$2" "$output_file" 2> godot_error.log
 fi
 
 check_for_errors

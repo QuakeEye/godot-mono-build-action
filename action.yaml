@@ -26,6 +26,9 @@ inputs:
   runVerbose:
     description: 'Runs Godot CLI commands in verbose mode'
     default: false
+  isWindows:
+    description: 'Adds an exe filetype extension on the executable'
+    default: false
 
 
 runs:
@@ -40,6 +43,7 @@ runs:
     - ${{ inputs.debugMode }}
     - ${{ inputs.viewVersions }}
     - ${{ inputs.runVerbose }}
+    - ${{ inputs.isWindows }}
 
 branding:
   icon: "play-circle"
