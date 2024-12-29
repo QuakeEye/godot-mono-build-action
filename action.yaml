@@ -1,5 +1,5 @@
-name: "Build Mono Godot Project"
-description: "Build a Godot project that uses Mono"
+name: "Build Godot Mono Project"
+description: "Build a Godot project that uses the Mono version of the Godot engine"
 
 inputs:
   name:
