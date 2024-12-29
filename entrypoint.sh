@@ -13,9 +13,6 @@ check_for_errors() {
 }
 
 
-ls -la /root/.local/share/godot/
-
-
 # Move godot templates already installed from the docker image to home
 mkdir -v -p ~/.local/share/godot/export_templates
 cp -a /root/.local/share/godot/export_templates/4.3.stable.mono ~/.local/share/godot/export_templates/4.3.stable.mono

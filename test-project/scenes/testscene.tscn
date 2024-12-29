@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bufxcqkmw7bmt"]
+
+[sub_resource type="Theme" id="Theme_ry5rp"]
+default_font_size = 120
+
+[node name="Testscene" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1152.0
+offset_bottom = 646.0
+theme = SubResource("Theme_ry5rp")
+text = "The test project has built correctly."
