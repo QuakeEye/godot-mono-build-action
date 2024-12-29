@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  ReleaseVersion:
+  release-version:
     runs-on: ubuntu-latest
     permissions:
       contents: write           # To be able to publish a GitHub Release
