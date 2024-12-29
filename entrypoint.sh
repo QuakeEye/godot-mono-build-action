@@ -1,34 +1,14 @@
-#!/bin/sh
-# set -e        # This can be re-enabled once Godot CLI gives back proper exit codes
+!/bin/sh
+set -e
 
 
 # Function definitions
 check_for_errors() {
-
     # Check the exit code of the last command
-
-    # This method does not yet work, as godot always returns 0: https://github.com/godotengine/godot/issues/83042
-    # It would be more elegant than the current solution, so I'm leaving it here for now.
-
-    # if [ $? -ne 0 ]; then
-    #   echo "Godot build failed. Exiting with error. This is the build log:"
-    #   cat godot_error.log
-    #   exit 1
-    # fi
-
-
-    # A hacky way to do this but as mentioned Godot currently always returns 0
-    errors=$(grep -c "ERROR: " godot_error.log)
-    ignoredErrors=$(grep -c "!EditorSettings::get_singleton() || !EditorSettings::get_singleton()->has_setting(p_setting)" godot_error.log)
-
-    echo "Found $errors error(s) in the project. Ignoring $ignoredErrors error(s)."
-
-    # Check if the project is valid
-    if [ $errors -gt 0 ] && [ $errors -gt $ignoredErrors ]
-    then
-        echo "Godot project is invalid/build has failed. Exiting with error. This is the build log:"
-        cat godot_error.log
-        exit 1
+    if [ $? -ne 0 ]; then
+      echo "Godot build failed. Exiting with error. This is the build log:"
+      cat godot_error.log
+      exit 1
     fi
 }
 
