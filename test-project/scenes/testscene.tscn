@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bufxcqkmw7bmt"]
+
+[ext_resource type="Script" path="res://scripts/SetTestLabel.cs" id="1_3g56f"]
+
+[sub_resource type="Theme" id="Theme_ry5rp"]
+default_font_size = 120
+
+[node name="Testscene" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1152.0
+offset_bottom = 346.0
+theme = SubResource("Theme_ry5rp")
+text = "The test project has built correctly."
+
+[node name="CodeLabel" type="RichTextLabel" parent="."]
+offset_top = 309.0
+offset_right = 1152.0
+offset_bottom = 646.0
+theme = SubResource("Theme_ry5rp")
+script = ExtResource("1_3g56f")

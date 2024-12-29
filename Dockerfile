@@ -1,4 +1,4 @@
-FROM barichello/godot-ci:mono-latest
+FROM barichello/godot-ci:mono-4.3
 
 # Install dotnet sdk
 RUN apt-get update

@@ -1,19 +1,30 @@
 name: Test Build Action
+
 on:
   push
 
 jobs:
-  TestAction:
+  test-action:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [windows, linux]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
       - name: Test Build Action
+        id: build
         uses: ./
         with:
           name: test-action-build
-          preset: linux
+          preset: ${{ matrix.platform }}
           projectDir: test-project
           package: true
-          
           runVerbose: true
+          isWindows: ${{ matrix.platform == 'windows' }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Client - ${{ matrix.platform }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
